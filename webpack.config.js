@@ -1,39 +1,36 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export default {
-  mode: 'development',
   entry: './src/index.js',
-
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    clean: true,
+    filename: 'bundle.[contenthash].js', // hashed filename
+    path: path.resolve('./dist'),
+    clean: true, // cleans old files on rebuild
   },
-
-  devServer: {
-    static: './dist',
-    port: 3000,
-    open: true,
-    hot: true,
-  },
-
   module: {
     rules: [
+      // JS (optional if using Babel)
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+      },
+      // CSS
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      // Images
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
-
   plugins: [
     new HtmlWebpackPlugin({
-      template: './dist/index.html',
+      template: './dist/index.html', // your HTML template
     }),
   ],
+  mode: 'development', // or 'production'
 };

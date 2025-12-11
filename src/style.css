@@ -1,5 +1,382 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+/* Styling starts from here */
+:root {
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --primary-color: hsl(18, 100%, 50%);
+    --primary-darker: hsl(18, 100%, 45%);
+    --secondary-color: hsl(33, 100%, 98%);
+    --dark-text: hsl(215, 50%, 23%);
+    --accent-color: hsl(182, 43%, 76%);
+    --img-border-radius: 14px;
+    --btn-border-radius : 10px;
+    font-size: 16px;
+}
+
+body {
+    min-height: 100vh;
+    padding: 0 15vw;
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+    color:var(--dark-text)
+}
+
+.logo {
+  display: inline-block;
   text-align: center;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.logo img {
+  border-radius: 0;
+  width: 200px;
+}
+
+img {
+  border-radius: var(--img-border-radius);
+}
+
+button {
+  color: var(--dark-text);
+  border: transparent;
+}
+
+a{
+  text-decoration: none;
+  color: var(--dark-text)
+}
+
+/* === Home page=== */
+/* --Nav-bar-- */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:2em;
+
+  padding-top: 2em;
+  margin-bottom: 5em;
+}
+
+nav button {
+    border: transparent;
+    background-color: transparent;
+    margin-left: 1.5em;
+    font-size: 1.3em;
+}
+
+nav button:hover {
+    cursor: pointer;
+}
+
+/* Content container */
+
+div#content {
+  display: flex;
+  flex-direction: column;
+  gap: 8vh
+}
+
+/* --Hero-- */
+
+#content #hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex:1 2 0;
+  gap: 2.2em
+}
+
+.headline {
+  flex: 1;
+  min-width: 250px;
+}
+
+.headline > * {
+  margin-bottom: 1.5rem;
+}
+
+.headline h1 {
+  font-size: 2.4em
+}
+
+.headline > div button,
+#hero-menu-text button {
+  font-size: 1.3em;
+  padding: 10px 20px;
+  border-radius: var(--btn-border-radius)
+}
+
+.headline > div button:hover,
+#hero-menu-text button:hover {
+  cursor: pointer;
+}
+
+.headline > div button:first-child,
+#hero-menu-text button {
+  background-color: var(--primary-color);
+  color: hsl(0 0 100%);
+  margin-right: 0.6em;
+  font-weight: 450;
+  
+}
+
+.headline > div button:first-child:hover,
+#hero-menu-text button:hover {
+  background-color: var(--primary-darker);
+}
+
+.headline > div button:last-child {
+  background-color: hsl(0 0 100%);
+  border: 1px solid rgb(211, 211, 211);
+  font-weight: 300;
+}
+
+.headline > div button:last-child:hover {
+  background-color: hsl(0 0 95%);
+}
+
+#hero-img {
+  flex:1 1 0 ;
+  min-width: 250px;
+}
+
+#hero-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* --Menu-preview */
+
+#menu-preview > h2 {
+  text-align: start;
+  margin-bottom: 1.5em;
+  font-size: 2em;
+}
+
+#cards  {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  column-gap: 0.3em;
+  row-gap: 2em;
+  margin: 0 auto;
+}
+
+.card > * {
+  margin-bottom: 0.6em;
+  max-width: 300px;
+}
+
+
+.card > img:hover {
+  filter: brightness(75%);
+  cursor: pointer;
+}
+
+/* Our story */
+#our-story> h2 {
+  font-size: 2em;
+}
+
+#story-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em
+}
+
+#story-container > div {
+  flex:1;
+  max-width: 700px;
+}
+
+#story-container p {
+  font-size: 1.4em;
+  font-weight: 300;
+}
+
+#story-container img {
+  flex:1;
+  max-width: 500px;
+}
+
+/* --Testimonial-- */
+#testimonial h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+.box-quote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+  background-color: hsl(0 0 100%);
+  padding: 40px 40px;
+  border-radius: var(--img-border-radius);
+}
+
+.quote-text {
+  display:flex;
+  flex-direction: column;
+  gap: 3em;
+  max-width: 700px;
+  font-size: 1.5rem;
+}
+
+.quote-text p:first-child {
+  font-weight: 300;
+}
+
+.quote-person img {
+  max-width: 400px;
+}
+
+/* --Location and contact-- */
+
+#loc-and-contact {
+  padding-bottom: 4em;
+}
+
+#loc-and-contact > h2 {
+  margin-bottom: 1.5em;
+  font-size: 2em;
+}
+
+#sections {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+#sections h3 {
+  margin-bottom: 0.5em;
+}
+
+/* ===Menu page=== */
+/* Hero section */
+
+#hero-menu {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.ibb.co.com/7tV238Mv/2149209220.jpg");
+  height: 40vh;
+  border-radius: var(--img-border-radius);
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover ;
+  position: relative;
+}
+
+#hero-menu-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+#hero-menu-text h1 {
+  font-size: 4em;
+}
+
+#hero-menu-text > * {
+  margin-bottom: 1.5rem;
+}
+
+#menus-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  gap: 2em;
+}
+
+.menu-section h2 {
+  margin-bottom: 0.6em;
+}
+
+.menu-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap:1em
+}
+
+.menu-card {
+  background-color: #fff;
+  border-radius: var(--img-border-radius);
+  min-height: 350px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0.6em 0 1.5em 1em
+}
+
+
+.card-image {
+  margin: auto;
+}
+
+.card-image img {
+  max-width: 300px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+/* ==About page== */
+/* --Hero-- */
+
+.about-hero-text > p {
+  font-size: 1.3rem;
 }
